@@ -11617,70 +11617,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   indexListSticky: 965 };exports.default = _default;
 
 /***/ }),
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */,
-/* 87 */,
-/* 88 */,
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */
+/* 42 */
 /*!***********************************************************************!*\
   !*** C:/Users/春华秋实/Desktop/Web/shop-store/common/http.interceptor.js ***!
   \***********************************************************************/
@@ -11745,7 +11682,8 @@ var install = function install(Vue, vm) {
     else {
         // 如果返回false，则会调用Promise的reject回调，
         // 并将进入this.$u.post(url).then().catch(res=>{})的catch回调中，res为服务端的返回值
-        return false;
+        vm.$u.toast('获取数据失败，请重试');
+        return;
       }
   };
 };var _default =
@@ -11754,7 +11692,7 @@ var install = function install(Vue, vm) {
   install: install };exports.default = _default;
 
 /***/ }),
-/* 106 */
+/* 43 */
 /*!***************************************************************!*\
   !*** C:/Users/春华秋实/Desktop/Web/shop-store/common/http.api.js ***!
   \***************************************************************/
@@ -11766,6 +11704,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 var swiperdataUrl = '/home/swiperdata';
 var catitemsUrl = '/home/catitems';
 var floordataUrl = '/home/floordata';
+var categoriesUrl = '/categories';
 
 // 此处第二个参数vm，就是我们在页面使用的this，你可以通过vm获取vuex等操作，更多内容详见uView对拦截器的介绍部分：
 // https://uviewui.com/js/http.html#%E4%BD%95%E8%B0%93%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%EF%BC%9F
@@ -11774,12 +11713,13 @@ var install = function install(Vue, vm) {
   var getSwiperdata = function getSwiperdata() {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get(swiperdataUrl);};
   var getCatitems = function getCatitems() {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get(catitemsUrl);};
   var getFloordata = function getFloordata() {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get(floordataUrl);};
+  var getCategories = function getCategories() {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.get(categoriesUrl);};
 
   // 此处使用了传入的params参数，一切自定义即可
   var getInfo = function getInfo() {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return vm.$u.post(indexUrl, params);};
 
   // 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
-  vm.$u.api = { getSwiperdata: getSwiperdata, getCatitems: getCatitems, getFloordata: getFloordata };
+  vm.$u.api = { getSwiperdata: getSwiperdata, getCatitems: getCatitems, getFloordata: getFloordata, getCategories: getCategories };
 };var _default =
 
 {

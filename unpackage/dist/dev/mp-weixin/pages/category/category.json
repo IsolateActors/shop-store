@@ -2,6 +2,8 @@
   "navigationBarTitleText": "分类",
   "enablePullDownRefresh": false,
   "usingComponents": {
+    "search-input": "/components/search-input/search-input",
+    "mall-menu": "/components/mall-menu/mall-menu",
     "u-tabbar": "/uview-ui/components/u-tabbar/u-tabbar"
   }
 }
