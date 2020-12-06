@@ -4,7 +4,7 @@
 			<!-- 搜索框 -->
 		<search-input></search-input>
 		<!-- 轮播图 -->
-		<u-swiper :list="swiperList" name="image_src" height="340"></u-swiper>
+		<u-swiper :list="swiperList" mode='rect' name="image_src" height="340"></u-swiper>
 		
 		<!-- 导航栏 -->
 		<u-grid :col="4" :border="false">
