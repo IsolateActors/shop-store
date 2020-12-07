@@ -133,6 +133,8 @@
 						// 不存在
 						console.log(index)
 						this.goodsData.num = 1
+						// 滑块画出状态
+						this.goodsData.swipeActionShow = false
 						// 选中状态
 						this.goodsData.checked = true
 						cart.push(this.goodsData)
@@ -147,8 +149,7 @@
 					
 					this.$refs.uToast.show({
 						title: '添加成功',
-						type: 'success',
-						position: 'bottom'
+						type: 'default'
 						// url: '/pages/user/index'
 					})
 				}, 500)
