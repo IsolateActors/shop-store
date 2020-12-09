@@ -29,6 +29,12 @@ const install = (Vue, vm) => {
 		
 		// 可以对某个url进行特别处理，此url参数为this.$u.get(url)中的url值
 		// if(config.url == '/user/login') config.header.noToken = true;
+		
+		
+		if(config.url == '/my/orders/create' || config.url == '/my/orders/req_unifiedorder') {
+			const token = uni.getStorageSync('token');
+			config.header.Authorization = token;
+		}
 		// 最后需要将config进行return
 		return config;
 		// 如果return一个false值，则会取消本次请求

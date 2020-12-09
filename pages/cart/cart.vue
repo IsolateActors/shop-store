@@ -10,7 +10,7 @@
 					 @click="handleSwiperAction" @open="open" :options="options">
 						<view class="goodscart-item">
 							<view class="cart-check ">
-								<u-checkbox @change="handleItemChange(item.goods_id)" v-model="item.checked" active-color="#eb4450"></u-checkbox>
+								<u-checkbox @change="handleItemChange(item.goods_id)" v-model="item.checked" active-color="#47d3ce"></u-checkbox>
 							</view>
 							<view class="cart-img">
 								<image class="image" mode="aspectFit" :src="item.goods_small_logo"></image>
@@ -39,7 +39,7 @@
 		<!-- 底部工具栏 -->
 		<view class="foot-tool" v-if="cartlist.length !== 0">
 			<view class="all-check-wrap">
-				<u-checkbox @change='handleItemAllchecked' v-model="allchecked" active-color="#eb4450">全选</u-checkbox>
+				<u-checkbox @change='handleItemAllchecked' v-model="allchecked" active-color="#47d3ce">全选</u-checkbox>
 			</view>
 			<view class="total-price-wrap">
 				<view class="total-price">
@@ -77,7 +77,7 @@
 				options: [{
 					text: '删除',
 					style: {
-						backgroundColor: '#eb4450'
+						backgroundColor: '#47d3ce'
 					}
 				}]
 			}

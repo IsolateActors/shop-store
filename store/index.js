@@ -30,7 +30,7 @@ const store = new Vuex.Store({
 				pagePath: '/pages/user/user'
 			}
 		],
-		vuex_tabbar_active_color: '#eb4450'
+		vuex_tabbar_active_color: '#47d3ce'
 	}
 	
 })

@@ -9,7 +9,7 @@
 		<!-- 导航tabs -->
 		<u-sticky offset-top="90">
 		<view class="tabs-title">
-			<u-tabs :list="list" :is-scroll="false" :current="current" @change="change" active-color="#eb4450"></u-tabs>
+			<u-tabs :list="list" :is-scroll="false" :current="current" @change="change" active-color="#47d3ce"></u-tabs>
 		</view>
 		</u-sticky>
 		

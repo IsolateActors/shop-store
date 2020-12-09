@@ -171,16 +171,17 @@
 </style>
 <style lang="scss">
 	.goods-price {
-		padding: 15rpx;
+		padding: 15rpx 15rpx 0 15rpx;
 		font-size: 32rpx;
 		font-weight: 600;
 		color: $theme-color;
+		border-top: 1rpx solid #eee;
+		padding-left: 20rpx;
 	}
 
 	.good-name-row {
 		display: flex;
-		border-top: 5rpx solid #eee;
-		border-bottom: 10rpx solid #eee;
+		border-bottom: 5rpx solid #eee;
 		padding: 10rpx 0;
 
 		.goode-name {
@@ -189,6 +190,7 @@
 			font-size: 30rpx;
 			padding: 0 20rpx;
 			line-height: 50rpx;
+			font-weight: 500;
 		}
 
 		.goods-collect {
@@ -198,7 +200,6 @@
 			justify-content: center;
 			align-items: center;
 
-			border-left: 5rpx solid #eee;
 
 			.collect-text {
 				font-size: 28rpx;

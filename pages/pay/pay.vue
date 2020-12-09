@@ -27,7 +27,7 @@
 							￥{{item.goods_price}}
 						</view>
 						<view class="goods-num">
-							x1
+							x{{item.num}}
 						</view>
 					</view>
 				</view>
@@ -46,7 +46,7 @@
 			</view>
 
 			<view class="order-pay-wrap">
-				<u-button size="medium" type="error" shape="circle" @click="handlePay">支付({{totalNum}})</u-button>
+				<u-button size="medium" type="error" shape="circle" @click="handleOrderPay">支付({{totalNum}})</u-button>
 			</view>
 		</view>
 	</view>
@@ -100,8 +100,58 @@
 				// 	}
 				// })
 			},
-			handlePay() {
-
+			// 支付
+			async handleOrderPay() {
+				const token = uni.getStorageSync('token')
+				 
+				 if(!token){
+					 uni.navigateTo({
+					 	url:"/pages/auth/auth"
+					 })
+					 return
+				 }
+				 
+				 console.log(token)
+				 
+				 let goods = []
+				 this.cartlist.forEach(v => goods.push({
+					 goods_id: v.goods_id,
+					 goods_number: v.num,
+					 goods_price: v.goods_price
+				 }))
+				 
+				 // 支付
+				 try{
+				 	const {order_number} = await this.$u.api.getOrderCreate({
+				 						 order_price: this.totalPrice,
+				 						 consignee_addr: this.address.all,
+				 						 goods: goods
+				 	})
+				 	
+				 	const {pay} = await this.$u.api.getOrderPay({
+				 						 order_number
+				 	})
+				 	
+				 	await uni.requestPayment(pay)
+					
+					// 查询支付状态
+					const res = await this.$u.api({order_number})
+					console.log(res)
+					await this.$u.toast("支付成功")
+					
+					// 设回缓存
+					let newCart = uni.getStorageSync('cart');
+					newCart = newCart.filter(v=> !v.checked)
+					uni.setStorageSync('cart', newCart)
+					
+					this.$u.route('/pages/order/order');
+				 }catch(e){
+				 	//TODO handle the exception
+					await this.$u.toast("支付失败")
+				 }
+				 
+				 console.log(res)
+				 
 			}
 		},
 

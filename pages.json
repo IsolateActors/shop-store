@@ -57,7 +57,7 @@
             "path" : "pages/goods-detail/goods-detail",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "商品详情",
                 "enablePullDownRefresh": false
             }
             
@@ -71,11 +71,29 @@
             }
             
         }
+        ,{
+            "path" : "pages/auth/auth",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登录授权",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/order",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "优购商店",
-		"navigationBarBackgroundColor": "#eb4450",
+		"navigationBarBackgroundColor": "#47d3ce",
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
