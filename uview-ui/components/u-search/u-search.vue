@@ -231,12 +231,18 @@ export default {
 	methods: {
 		// 目前HX2.6.9 v-model双向绑定无效，故监听input事件获取输入框内容的变化
 		inputChange(e) {
-			this.keyword = e.detail.value;
+			setTimeout(()=>{
+				this.keyword = e.detail.value;
+			},0)
+			
 		},
 		// 清空输入
 		// 也可以作为用户通过this.$refs形式调用清空输入框内容
 		clear() {
-			this.keyword = '';
+			setTimeout(()=> {
+				this.keyword = '';
+			},100)
+			
 			// 延后发出事件，避免在父组件监听clear事件时，value为更新前的值(不为空)
 			this.$nextTick(() => {
 				this.$emit('clear');

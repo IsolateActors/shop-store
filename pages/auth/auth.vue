@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="btn">
-			<u-button open-type="getUserInfo" @getuserinfo="handleGetUserInfo" plain size="medium" :ripple="true" type="error">获取登录授权</u-button>
+			<u-button open-type="getUserInfo" @getuserinfo="handleGetUserInfo" plain size="medium" :ripple="true" :custom-style="{color: '#47d3ce'}">获取登录授权</u-button>
 		</view>
 	</view>
 </template>

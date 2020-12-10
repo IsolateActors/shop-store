@@ -31,7 +31,7 @@ const install = (Vue, vm) => {
 		// if(config.url == '/user/login') config.header.noToken = true;
 		
 		
-		if(config.url == '/my/orders/create' || config.url == '/my/orders/req_unifiedorder') {
+		if(config.url.includes('/my')) {
 			const token = uni.getStorageSync('token');
 			config.header.Authorization = token;
 		}

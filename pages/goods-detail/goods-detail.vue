@@ -15,10 +15,10 @@
 				<view class="goode-name u-line-2">
 					{{goodsData.goods_name}}
 				</view>
-				<view class="goods-collect">
-					<u-icon name="star" size="28"></u-icon>
+				<view class="goods-collect" @click="handleCollect">
+					<u-icon :name="isCollect?'star-fill':'star'" color="#47d3ce" size="28"></u-icon>
 					<view class="collect-text">
-						收藏
+						{{isCollect?'取消收藏':'收藏'}}
 					</view>
 				</view>
 			</view>
@@ -48,7 +48,7 @@
 					<button class="btn" open-type="share"></button>
 				</view>
 				<view class="item car" @click="goCart()">
-					<u-badge class="car-num" :count="cartcount" type="error" :offset="[-3, -6]"></u-badge>
+					<u-badge class="car-num" :count="cartcount" bgColor="#47d3ce" type="error" :offset="[-3, -6]"></u-badge>
 					<u-icon name="shopping-cart" :size="40" :color="$u.color['contentColor']"></u-icon>
 					<view class="text u-line-1">购物车</view>
 				</view>
@@ -68,23 +68,28 @@
 		data() {
 			return {
 				goodsData: {},
-				cartcount:0
+				cartcount:0,
+				isCollect: false
 			};
 		},
-		onLoad(options) {
-			console.log(options)
-			this.getGoodsDetail(options.goods_id)
+		async onLoad(options) {
+			// console.log(options)
+			await this.getGoodsDetail(options.goods_id)
 			
 			// 购物车数量
 			let cart = uni.getStorageSync('cart') || [];
 			this.cartcount = cart.length
+			
+			// 获取收藏数据
+			let collect = uni.getStorageSync("collect")|| []
+			this.isCollect = collect.some(v=>v.goods_id === this.goodsData.goods_id)
 		},
 		methods: {
 			async getGoodsDetail(goodsId) {
 				const res = await this.$u.api.getGoodsDetail({
 					goods_id: goodsId
 				})
-				console.log(res)
+				// console.log(res)
 				this.goodsData = {
 					goods_price: res.goods_price,
 					goods_name: res.goods_name,
@@ -154,6 +159,23 @@
 					})
 				}, 500)
 				
+			},
+			
+			handleCollect(){
+				let collect = uni.getStorageSync('collect')||[]
+				let index = collect.findIndex(v => v.goods_id === this.goodsData.goods_id)
+				
+				if(index !== -1){
+					collect.splice(index, 1)
+					this.isCollect = false
+					this.$u.toast("已取消收藏")
+				}else{
+					collect.push(this.goodsData)
+					this.isCollect = true
+					this.$u.toast("收藏成功")
+				}
+				
+				uni.setStorageSync('collect', collect)
 			}
 		}
 	}
@@ -203,6 +225,7 @@
 
 			.collect-text {
 				font-size: 28rpx;
+				color: #47d3ce;
 			}
 		}
 	}
@@ -278,7 +301,7 @@
 			}
 
 			.buy {
-				background-color: #ed3f14;
+				background-color: #47d3ce;
 			}
 		}
 	}

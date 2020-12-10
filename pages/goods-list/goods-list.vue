@@ -166,18 +166,22 @@
 	page{
 		background-color: rgb(240, 240, 240);
 	}
+	.u-sticky-wrap{
+		border-radius: 0 0 20rpx 20rpx !important;
+	}
 	.u-tabs{
-		border-radius: 8rpx;
+		overflow: hidden !important;
+		border-radius: 20rpx;
 	}
 </style>
 
 <style lang="scss">
 	.tabs-title{
-		border-radius: 8rpx;
+		border-radius: 10rpx;
 	}
 .goods-item{
-	border-radius: 8rpx;
-	margin: 10rpx 0;
+	border-radius: 20rpx;
+	margin: 10rpx 20rpx;
 	background-color: #FFFFFF;
 	padding: 16rpx;
 	display: flex;

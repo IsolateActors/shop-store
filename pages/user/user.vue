@@ -27,9 +27,9 @@
 							收藏的店铺
 						</view>
 					</navigator>
-					<navigator>
+					<navigator url="/pages/collect/collect">
 						<view class="his-num">
-							0
+							{{collectNum}}
 						</view>
 						<view class="his-name">
 							收藏的商品
@@ -56,21 +56,21 @@
 				<view class="orders-wrap">
 					<u-card title="我的订单" :full="true" title-size="26" padding='18'>
 						<view class="order-content" slot="body">
-							<navigator>
+							<navigator url="/pages/order/order?type=1">
 								<u-icon name="order" size='40'></u-icon>
 								<view class="order-name">
 									全部订单
 								</view>
 							</navigator>
 
-							<navigator>
+							<navigator url="/pages/order/order?type=2">
 								<u-icon name="rmb-circle" size='40'></u-icon>
 								<view class="order-name">
 									待付款
 								</view>
 							</navigator>
 
-							<navigator>
+							<navigator url="/pages/order/order?type=3">
 								<u-icon name="car" size='40'></u-icon>
 								<view class="order-name">
 									待收货
@@ -122,7 +122,8 @@
 		data() {
 			return {
 				current: 3,
-				userInfo: {}
+				userInfo: {},
+				collectNum: 0
 			}
 		},
 		computed: {
@@ -138,6 +139,7 @@
 		},
 		onShow() {
 			this.userInfo = uni.getStorageSync('userInfo')
+			this.collectNum = uni.getStorageSync('collect').length
 		}
 	}
 </script>

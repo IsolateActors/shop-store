@@ -51,7 +51,7 @@
 			</view>
 
 			<view class="order-pay-wrap">
-				<u-button size="medium" type="error" shape="circle" @click="handlePay">结算({{totalNum}})</u-button>
+				<u-button size="medium" :custom-style="{color: '#47d3ce'}" shape="circle" @click="handlePay">结算({{totalNum}})</u-button>
 			</view>
 		</view>
 
