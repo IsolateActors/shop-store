@@ -102,7 +102,7 @@
 
 			// 预览图片
 			handlePreviewImg(index) {
-				console.log(index)
+				// console.log(index)
 				// 预览图片
 				const urls = this.goodsData.pics.map(p => p.pics_mid)
 				uni.previewImage({
@@ -129,7 +129,7 @@
 			
 			// 添加购物车
 			handleAddCart(){
-				console.log("添加购物车")
+				// console.log("添加购物车")
 				
 				this.$u.debounce(()=>{
 					let cart = uni.getStorageSync('cart') || [];

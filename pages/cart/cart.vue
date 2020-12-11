@@ -89,7 +89,7 @@
 
 			// 选中项
 			handleItemChange(goodsId) {
-				console.log(goodsId)
+				// console.log(goodsId)
 				// 找到被修改商品对象
 				let goodsIndex = this.cartlist.findIndex(v => v.goods_id === goodsId)
 				// 取反
@@ -126,9 +126,9 @@
 
 			// 全选功能
 			handleItemAllchecked() {
-				console.log(this.allchecked)
+				// console.log(this.allchecked)
 				this.allchecked = !this.allchecked
-				console.log(this.allchecked)
+				// console.log(this.allchecked)
 				// 同步数据全部选中或全部不选中
 				this.cartlist.forEach(v => v.checked = this.allchecked)
 				this.setCart(this.cartlist)
@@ -137,8 +137,8 @@
 
 			// 购买数量
 			handleBuyNum(options, goodsId) {
-				console.log(options)
-				console.log(goodsId)
+				// console.log(options)
+				// console.log(goodsId)
 				let goodsIndex = this.cartlist.findIndex(v => v.goods_id === goodsId)
 				this.cartlist[goodsIndex].num = options.value
 				this.setCart(this.cartlist)

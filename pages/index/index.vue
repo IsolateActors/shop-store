@@ -4,11 +4,11 @@
 			<!-- 搜索框 -->
 		<search-input></search-input>
 		<!-- 轮播图 -->
-		<u-swiper :list="swiperList" mode='rect' name="image_src" height="340"></u-swiper>
+		<u-swiper @click="handleClickSwiper" :list="swiperList" mode='rect' name="image_src" height="340"></u-swiper>
 		
 		<!-- 导航栏 -->
 		<u-grid :col="4" :border="false">
-				<u-grid-item v-for="item in catitems" :key="item.name">
+				<u-grid-item :index="index" @click="handleClickCatitems" v-for="(item,index) in catitems" :key="item.name">
 					<u-image width="100rpx" height="130rpx" :src="item.image_src"></u-image>
 				</u-grid-item>
 			</u-grid>
@@ -45,17 +45,30 @@
 			async getSwiper(){
 				const res = await this.$u.api.getSwiperdata()
 				this.swiperList = res
-				console.log(this.swiperList)
+				// console.log(this.swiperList)
 			},
 			async getCatitems(){
 				const res = await this.$u.api.getCatitems()
 				this.catitems = res
-				console.log(this.catitems)
+				// console.log(this.catitems)
 			},
 			async getFloor(){
 				const res = await this.$u.api.getFloordata()
 				this.floorList = res
-				console.log(this.floorList)
+				// console.log(this.floorList)
+			},
+			
+			handleClickSwiper(index){
+				let id = this.swiperList[index].goods_id
+				this.$u.route(`/pages/goods-detail/goods-detail?goods_id=${id}`)
+			},
+			
+			handleClickCatitems(index){
+				// 统一跳到分类页（模拟）
+				this.$u.route({
+					type: 'switchTab',
+					url: '/pages/category/category'
+				})
 			}
 		}
 	}

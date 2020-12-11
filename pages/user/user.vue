@@ -96,7 +96,7 @@
 				<view class="app-info-wrap">
 					<u-cell-group>
 						<u-cell-item title="联系客服" value="18312093392"></u-cell-item>
-						<u-cell-item title="意见反馈" :arrow="true"></u-cell-item>
+						<u-cell-item @click='handleFeedBack' title="意见反馈" :arrow="true"></u-cell-item>
 						<u-cell-item title="关于我们" :arrow="true"></u-cell-item>
 					</u-cell-group>
 				</view>
@@ -131,10 +131,14 @@
 		},
 		methods: {
 			handleGetUserInfo(e) {
-				console.log(e)
+				// console.log(e)
 				const {userInfo} = e.detail
 				uni.setStorageSync("userInfo", userInfo)
 				this.userInfo = userInfo
+			},
+			
+			handleFeedBack(){
+				this.$u.route('/pages/feedback/feedback')
 			}
 		},
 		onShow() {

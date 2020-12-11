@@ -8,21 +8,21 @@
 			<!-- 内容 -->
 			<view class="floor-list">
 				<view class="left">
-					<navigator>
+					<navigator :url="item.product_list[0].navigator_url | queryUrlFilter">
 						<u-image mode="scaleToFill" width="100%" height="100%" :src="item.product_list[0].image_src"></u-image>
 					</navigator>
 				</view>
 				<view class="right">
-					<navigator>
-						<u-image mode="scaleToFill" width="100%" height="100%" :src="item.product_list[1].image_src"></u-image>
-					</navigator>
-					<navigator>
+					<navigator :url="item.product_list[1].navigator_url | queryUrlFilter">
 						<u-image mode="scaleToFill" width="100%" height="100%" :src="item.product_list[2].image_src"></u-image>
 					</navigator>
-					<navigator>
+					<navigator :url="item.product_list[2].navigator_url | queryUrlFilter">
+						<u-image mode="scaleToFill" width="100%" height="100%" :src="item.product_list[2].image_src"></u-image>
+					</navigator>
+					<navigator :url="item.product_list[3].navigator_url | queryUrlFilter">
 						<u-image mode="scaleToFill" width="100%" height="100%" :src="item.product_list[3].image_src"></u-image>
 					</navigator>
-					<navigator>
+					<navigator :url="item.product_list[4].navigator_url | queryUrlFilter">
 						<u-image mode="scaleToFill" width="100%" height="100%" :src="item.product_list[4].image_src"></u-image>
 					</navigator>
 				</view>
@@ -38,7 +38,17 @@
 				
 			};
 		},
-		props:['list']
+		props:['list'],
+		filters:{
+			queryUrlFilter(value){
+				if(!value)
+					return ''
+				let index = value.toString().indexOf('?')
+				// console.log(value.slice(index))
+				let queryStr = value.slice(index)
+				return '/pages/goods-list/goods-list' + queryStr
+			}
+		}
 	}
 </script>
 

@@ -117,7 +117,7 @@
 			async getGoodsList(){
 				const res = await this.$u.api.getGoodsSearch(this.queryInfo)
 				
-				console.log(res)
+				// console.log(res)
 				this.goodslist = [...this.goodslist, ...res.goods]
 				this.total = res.total
 				this.totalPages = Math.ceil(res.total / this.queryInfo.pagesize)
@@ -133,14 +133,15 @@
 			}
 		},
 		onLoad(options) {
-			console.log(options)
-			this.queryInfo.cid = options.cid
+			// console.log(options)
+			this.queryInfo.cid = options.cid || ''
+			this.queryInfo.query = options.query || ''
 			
 			this.getGoodsList()
 		},
 		// 上拉加载
 		onReachBottom(){
-			console.log("到底了")
+			// console.log("到底了")
 			if(this.queryInfo.pagenum >= this.totalPages){
 				// 无下一页
 				this.showHasMore = true

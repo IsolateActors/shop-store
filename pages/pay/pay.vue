@@ -136,7 +136,7 @@
 					
 					// 查询支付状态
 					const res = await this.$u.api({order_number})
-					console.log(res)
+					// console.log(res)
 					await this.$u.toast("支付成功")
 					
 					// 设回缓存
@@ -150,7 +150,7 @@
 					await this.$u.toast("支付失败")
 				 }
 				 
-				 console.log(res)
+				 // console.log(res)
 				 
 			}
 		},
