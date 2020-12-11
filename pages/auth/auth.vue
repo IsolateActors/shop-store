@@ -17,6 +17,8 @@
 			handleGetUserInfo(e){
 				console.log(e)
 				const {encryptedData, rawData, iv, signature} = e.detail
+				const {userInfo} = e.detail
+				uni.setStorageSync("userInfo", userInfo)
 				let that = this
 				uni.login({
 					timeout: 10000,

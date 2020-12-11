@@ -201,8 +201,12 @@
 				let pages = getCurrentPages();
 				let currentPage = pages[pages.length - 1]
 				// console.log(currentPage.options)
-				const {type} = currentPage.options
+				let {type} = currentPage.options
+				type = type ? type:1
 				// console.log(type)
+				this.current = type -1
+				this.swiperCurrent = type -1
+				this.dx = type -1
 				this.getOrderList(type)
 			},
 			computed: {
@@ -265,6 +269,7 @@
 					this.$refs.tabs.setFinishCurrent(current);
 					this.swiperCurrent = current;
 					this.current = current;
+					this.getOrderList(current + 1);
 				}
 			}
 		}

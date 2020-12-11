@@ -77,7 +77,7 @@
 								</view>
 							</navigator>
 
-							<navigator>
+							<navigator url="/pages/order/order?type=4">
 								<u-icon name="clock" size='40'></u-icon>
 								<view class="order-name">
 									退货/退款
@@ -135,6 +135,27 @@
 				const {userInfo} = e.detail
 				uni.setStorageSync("userInfo", userInfo)
 				this.userInfo = userInfo
+				
+				let that = this
+				uni.login({
+					timeout: 10000,
+					success(res){
+						// console.log(res)
+						
+						// const result = await that.$u.api.getToken({
+						// 	encryptedData,
+						// 	rawData,
+						// 	iv,
+						// 	signature,
+						// 	code: res.code
+						// })
+						
+						// console.log(result)
+						const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIzLCJpYXQiOjE1NjQ3MzAwNzksImV4cCI6MTAwMTU2NDczMDA3OH0.YPt-XeLnjV-_1ITaXGY2FhxmCe4NvXuRnRB8OMCfnPo"
+						uni.setStorageSync('token', token)
+						
+					}
+				})
 			},
 			
 			handleFeedBack(){

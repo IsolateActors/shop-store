@@ -103,6 +103,7 @@
 			// 支付
 			async handleOrderPay() {
 				const token = uni.getStorageSync('token')
+				const address = uni.getStorageSync('address')
 				 
 				 if(!token){
 					 uni.navigateTo({
@@ -111,7 +112,11 @@
 					 return
 				 }
 				 
-				 console.log(token)
+				 if(!address.userName){
+					 this.$u.toast("请选择收货地址")
+					 return
+				 }
+				 // console.log(token)
 				 
 				 let goods = []
 				 this.cartlist.forEach(v => goods.push({
@@ -127,16 +132,19 @@
 				 						 consignee_addr: this.address.all,
 				 						 goods: goods
 				 	})
+					
+					
+					console.log(order_number)
 				 	
 				 	const {pay} = await this.$u.api.getOrderPay({
 				 						 order_number
 				 	})
-				 	
+				 	console.log(pay)
 				 	await uni.requestPayment(pay)
 					
 					// 查询支付状态
-					const res = await this.$u.api({order_number})
-					// console.log(res)
+					const res = await this.$u.api.getOrderPayChecked({order_number})
+					console.log(res)
 					await this.$u.toast("支付成功")
 					
 					// 设回缓存
@@ -147,6 +155,7 @@
 					this.$u.route('/pages/order/order');
 				 }catch(e){
 				 	//TODO handle the exception
+					console.log(e)
 					await this.$u.toast("支付失败")
 				 }
 				 
